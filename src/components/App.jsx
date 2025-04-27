@@ -10,31 +10,20 @@ function App() {
     neutral: 0,
     bad: 0,
   });
+  const totalFeedback = good + neutral + bad;
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((good / totalFeedback) * 100) + `%` : `0%`;
   return (
     <>
       <Description />
       <Options feedback={feedback} setFeedback={setFeedback} />
-      <Feedback feedback={feedback} />
+      <Feedback
+        feedback={feedback}
+        totalFeedback={totalFeedback}
+        positiveFeedback={positiveFeedback}
+      />
     </>
   );
 }
 
 export default App;
-
-// export default function App() {
-//   const [clicks, setClicks] = useState(() => {
-//     const savedClicks = window.localStorage.getItem("saved-clicks");
-//     if (savedClicks !== null) {
-//       return Number(savedClicks);
-//     }
-//     return 0;
-//   });
-
-//   useEffect(() => {
-//     window.localStorage.setItem("saved-clicks", clicks);
-//   }, [clicks]);
-
-//
-// }
-
-// You clicked { clicks } times

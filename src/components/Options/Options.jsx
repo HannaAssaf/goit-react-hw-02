@@ -1,10 +1,10 @@
 import Feedback from "../Feedback/Feedback";
 
 export default function Options({ feedback, setFeedback }) {
-  const handleFeedback = (feedbackType) => {
-    setFeedback((type) => ({
-      ...type,
-      [feedbackType]: type[feedbackType] + 1,
+  const updateFeedback = (feedbackType) => {
+    setFeedback(() => ({
+      ...feedback,
+      [feedbackType]: feedback[feedbackType] + 1,
     }));
   };
 
@@ -17,9 +17,9 @@ export default function Options({ feedback, setFeedback }) {
   };
   return (
     <div>
-      <button onClick={() => handleFeedback("good")}>Good</button>
-      <button onClick={() => handleFeedback("neutral")}>Neutral</button>
-      <button onClick={() => handleFeedback("bad")}>Bad</button>
+      <button onClick={() => updateFeedback("good")}>Good</button>
+      <button onClick={() => updateFeedback("neutral")}>Neutral</button>
+      <button onClick={() => updateFeedback("bad")}>Bad</button>
       <button onClick={handleReset}>Reset</button>
     </div>
   );
